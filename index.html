@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kevin Arevalo - Web Developer</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <span>Kevin Arevalo</span>
+        </div>
+        <div class="nav-menu" id="nav-menu">
+          <a href="#hero" class="nav-link">Home</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="nav-actions">
+          <button class="theme-toggle" id="theme-toggle">
+            <i class="fas fa-sun"></i>
+          </button>
+          <div class="nav-hamburger" id="nav-hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-content">
+        <button class="sidebar-close" id="sidebar-close">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="sidebar-menu">
+          <a href="#hero" class="sidebar-link">Home</a>
+          <a href="#about" class="sidebar-link">About</a>
+          <a href="#projects" class="sidebar-link">Projects</a>
+          <a href="#skills" class="sidebar-link">Skills</a>
+          <a href="#services" class="sidebar-link">Services</a>
+          <a href="#contact" class="sidebar-link">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <section id="hero" class="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>Hi, I'm <span class="hero-name">Kevin Arevalo</span></h1>
+            <div class="hero-title">
+              <span class="typing-text" id="typing-text">Web Developer</span>
+            </div>
+            <p class="hero-description">
+              A dedicated Web Developer focused on creating dynamic and
+              user-friendly websites with clean, efficient code.
+            </p>
+            <div class="hero-buttons">
+              <a href="#contact" class="btn btn-primary">Get In Touch</a>
+              <a href="#projects" class="btn btn-secondary">View Projects</a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <div class="image-container">
+              <div class="image-placeholder">
+                <img
+                  src="/images/pic1.jpg"
+                  alt="Kevin Arevalo Profile Picture"
+                />
+              </div>
+              <div class="image-decoration">
+                <div class="decoration-circle circle-1"></div>
+                <div class="decoration-circle circle-2"></div>
+                <div class="decoration-circle circle-3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+          <div class="about-image">
+            <div class="about-image-container">
+              <img src="/images/pic2.jpg" alt="About Kevin Arevalo" />
+            </div>
+          </div>
+          <div class="about-text">
+            <h3>Dedicated Web Developer</h3>
+            <p>
+              I am a passionate Web Developer with a strong foundation in
+              building modern, responsive, and efficient web applications. My
+              expertise lies in both front-end and back-end technologies,
+              allowing me to deliver complete and robust solutions.
+            </p>
+            <p>
+              My approach is centered on problem-solving and a commitment to
+              writing clean, maintainable code. I enjoy turning complex ideas
+              into functional and elegant digital experiences.
+            </p>
+            <div class="about-stats">
+              <div class="stat">
+                <span class="stat-number">3+</span>
+                <span class="stat-label">Projects Completed</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">3+</span>
+                <span class="stat-label">Years Experience</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Client Satisfaction</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <div class="container">
+        <h2 class="section-title">My Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-image">
+              <img
+                src="./images/salazar.png"
+                alt="E-Commerce Platform Project"
+              />
+            </div>
+            <div class="project-content">
+              <h3>Salazar Cottages</h3>
+              <p>
+                Salazar Cottages is a user-friendly website that allows users to
+                book their stay at the resort, which offers comfortable cottages
+                and a refreshing swimming pool. It's the perfect getaway for
+                relaxation and recreation.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Html</span>
+                <span class="tech-tag">Css</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Php</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://megasus69.github.io/SalazarCottages/index.html"
+                  target="_blank"
+                  class="project-link"
+                  ><i class="fas fa-eye"></i> View</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-image">
+              <img
+                src="./images/doghub.png"
+                alt="Task Management App Project"
+              />
+            </div>
+            <div class="project-content">
+              <h3>DogHub</h3>
+              <p>
+                DogHub is an Android application built in Android Studio to
+                provide users with comprehensive information about medications,
+                including their uses, side effects, dosage, and interactions. By
+                empowering users with accurate and timely information, DogHub
+                aims to improve medication safety and promote better health
+                outcomes.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">Kotlin</span>
+                <span class="tech-tag">Firebase</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://drive.google.com/file/d/1eYNXS4K3-RfHVBEO3YyxKAsc74afc4ZX/view?usp=drive_link"
+                  target="_blank"
+                  class="project-link"
+                  ><i class="fas fa-eye"></i> View</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-image">
+              <img src="./images/zcaf.png" alt="Portfolio Website Project" />
+            </div>
+            <div class="project-content">
+              <h3>Zion Academy Christian Foundation, Inc.</h3>
+              <p>
+                ZCAF Online is the official website of Zion Christian Academy
+                Foundation Inc., serving as a digital hub for students, parents,
+                and the community. It provides easy access to information about
+                the school's mission, vision, academic programs, and
+                extracurricular activities. The website also features a
+                user-friendly interface and regular updates on school events,
+                news, and announcements.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Html</span>
+                <span class="tech-tag">Css</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Netlify</span>
+              </div>
+              <div class="project-links">
+                <a href="https://zcafinc.netlify.app/" class="project-link"
+                  ><i class="fas fa-eye"></i> View</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills">
+      <div class="container">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skills-carousel">
+          <div class="carousel-container">
+            <div class="carousel-wrapper" id="carousel-wrapper">
+              <div class="skill-category active">
+                <h3>Frontend</h3>
+                <div class="skills-list">
+                  <div class="skill-item">HTML</div>
+                  <div class="skill-item">CSS</div>
+                  <div class="skill-item">JavaScript</div>
+                </div>
+              </div>
+
+              <div class="skill-category">
+                <h3>Backend</h3>
+                <div class="skills-list">
+                  <div class="skill-item">Node.js</div>
+                  <div class="skill-item">Python</div>
+                  <div class="skill-item">PHP</div>
+                  <div class="skill-item">Laravel</div>
+                  <div class="skill-item">Django</div>
+                </div>
+              </div>
+
+              <div class="skill-category">
+                <h3>Database</h3>
+                <div class="skills-list">
+                  <div class="skill-item">MySQL</div>
+                  <div class="skill-item">MongoDB</div>
+                  <div class="skill-item">PostgreSQL</div>
+                  <div class="skill-item">Firebase</div>
+                </div>
+              </div>
+
+              <div class="skill-category">
+                <h3>Tools</h3>
+                <div class="skills-list">
+                  <div class="skill-item">Git</div>
+                  <div class="skill-item">Docker</div>
+                  <div class="skill-item">VS Code</div>
+                  <div class="skill-item">Figma</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-btn prev" id="prev-btn">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="carousel-indicators" id="carousel-indicators">
+              <div class="indicator active" data-slide="0"></div>
+              <div class="indicator" data-slide="1"></div>
+              <div class="indicator" data-slide="2"></div>
+              <div class="indicator" data-slide="3"></div>
+            </div>
+            <button class="carousel-btn next" id="next-btn">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="services">
+      <div class="container">
+        <h2 class="section-title">My Services</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3>Website Development</h3>
+            <p>
+              Building fully functional, responsive websites from the ground up
+              using modern HTML, CSS, and JavaScript.
+            </p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Responsive Design</li>
+              <li><i class="fas fa-check"></i> Interactive UI/UX</li>
+              <li><i class="fas fa-check"></i> Performance Optimization</li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-server"></i>
+            </div>
+            <h3>Backend Solutions</h3>
+            <p>
+              Developing robust server-side logic and APIs using Node.js,
+              Python, or PHP to power your web applications.
+            </p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Custom RESTful APIs</li>
+              <li><i class="fas fa-check"></i> Server-Side Logic</li>
+              <li>
+                <i class="fas fa-check"></i> Framework Expertise (Laravel,
+                Django)
+              </li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-database"></i>
+            </div>
+            <h3>Database Management</h3>
+            <p>
+              Designing and managing efficient, scalable databases with
+              technologies like MySQL, MongoDB, and PostgreSQL.
+            </p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Database Architecture</li>
+              <li><i class="fas fa-check"></i> Data Integration</li>
+              <li><i class="fas fa-check"></i> SQL & NoSQL Solutions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="contact-description">
+          Let's connect and bring your ideas to life!
+        </p>
+        <div class="contact-links">
+          <a
+            href="https://www.facebook.com/kevrvlo"
+            target="_blank"
+            class="contact-link"
+          >
+            <i class="fab fa-facebook-f"></i>
+            <span>Facebook</span>
+          </a>
+          <a
+            href="https://www.instagram.com/kev_arvlo/"
+            target="_blank"
+            class="contact-link"
+          >
+            <i class="fab fa-instagram"></i>
+            <span>Instagram</span>
+          </a>
+          <a
+            href="https://github.com/Megasus15/"
+            target="_blank"
+            class="contact-link"
+          >
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </a>
+          <a href="mailto:arevalokevin9696@gmail.com" class="contact-link">
+            <i class="fas fa-envelope"></i>
+            <span>Gmail</span>
+          </a>
+          <a href="tel:+639810265945" class="contact-link">
+            <i class="fas fa-phone"></i>
+            <span>Phone</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 Kevin Arevalo. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

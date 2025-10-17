@@ -37,6 +37,7 @@ function updateThemeIcon() {
 // **MODIFIED** Typing Animation Class to handle multiple texts
 class TypingAnimation {
   constructor(element, texts, speed = 150) {
+    // Slower default speed
     this.element = element;
     this.texts = texts;
     this.speed = speed;
@@ -58,12 +59,12 @@ class TypingAnimation {
     let typeSpeed = this.isDeleting ? this.speed / 2 : this.speed;
 
     if (!this.isDeleting && this.charIndex === currentText.length) {
-      typeSpeed = 2000;
+      typeSpeed = 2000; // Pause at the end of a word
       this.isDeleting = true;
     } else if (this.isDeleting && this.charIndex === 0) {
       this.isDeleting = false;
-      this.textIndex = (this.textIndex + 1) % this.texts.length;
-      typeSpeed = 500;
+      this.textIndex = (this.textIndex + 1) % this.texts.length; // Move to the next text
+      typeSpeed = 500; // Pause before starting the new word
     }
 
     this.charIndex += this.isDeleting ? -1 : 1;
@@ -173,8 +174,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // **MODIFIED** Initialize typing animation with new texts and slower speed
   if (typingText) {
-    const textsToType = ["Web Developer", "BS in Information Systems"];
-    new TypingAnimation(typingText, textsToType, 125);
+    const textsToType = ["Web Developer", "BS in Information System"];
+    new TypingAnimation(typingText, textsToType, 150);
   }
 
   const carousel = new SkillsCarousel();

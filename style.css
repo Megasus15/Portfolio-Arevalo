@@ -366,6 +366,14 @@ a:hover {
   color: var(--color-primary-hover);
 }
 
+/* **MODIFIED** Text Justification */
+.hero-description,
+.about-text p,
+.project-content p,
+.service-card p {
+  text-align: justify;
+}
+
 code,
 pre {
   font-family: var(--font-family-mono);
@@ -769,7 +777,6 @@ body {
   --border-color: #e0e0e0;
   --shadow: 0 4px 20px rgba(139, 69, 19, 0.1);
   --shadow-hover: 0 8px 30px rgba(139, 69, 19, 0.15);
-  /* **NEW** Light brown background for specific sections */
   --section-highlight-bg: #fdfaf6;
 }
 
@@ -785,7 +792,6 @@ body {
   --border-color: #3a2418;
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.4);
-  /* **NEW** Darker brown background for specific sections */
   --section-highlight-bg: #251d19;
 }
 
@@ -1026,6 +1032,13 @@ body {
   }
 }
 
+.hero-description,
+.about-text p,
+.project-content p,
+.service-card p {
+  text-align: justify;
+}
+
 .hero-description {
   font-size: 1.2rem;
   color: var(--text-secondary);
@@ -1072,7 +1085,6 @@ body {
   color: white;
 }
 
-/* **NEW** Image Styles */
 .image-placeholder img,
 .about-image-container img,
 .project-image img {
@@ -1251,7 +1263,6 @@ section {
   box-shadow: var(--shadow);
   transition: all 0.3s ease;
   border: 1px solid var(--border-color);
-  /* **MODIFIED** Make card a flex container */
   display: flex;
   flex-direction: column;
 }
@@ -1269,7 +1280,6 @@ section {
 
 .project-content {
   padding: 2rem;
-  /* **MODIFIED** Allow content to grow and push links down */
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -1307,7 +1317,6 @@ section {
 .project-links {
   display: flex;
   gap: 1rem;
-  /* **MODIFIED** Push links to the bottom */
   margin-top: auto;
 }
 
@@ -1323,7 +1332,6 @@ section {
 
 .project-link:hover {
   color: var(--secondary-color);
-  /* **MODIFIED** Add underline on hover */
   text-decoration: underline;
 }
 

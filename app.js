@@ -11,6 +11,15 @@ const indicators = document.querySelectorAll(".indicator");
 const navLinks = document.querySelectorAll(".nav-link");
 const sidebarLinks = document.querySelectorAll(".sidebar-link");
 
+// **MODIFIED** Elements for new features
+const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+const heroSection = document.getElementById("hero");
+const navbar = document.getElementById("navbar");
+
+// === NEW: ENCHANTED CURSOR ELEMENT ===
+const enchantedCursor = document.getElementById("enchanted-cursor");
+// (Removed const cursorGlow)
+
 // Theme Management
 let currentTheme = "light";
 
@@ -132,7 +141,6 @@ function toggleSidebar() {
 }
 
 function handleNavbarScroll() {
-  const navbar = document.querySelector(".navbar");
   if (window.scrollY > 50) {
     navbar.style.backgroundColor =
       currentTheme === "dark"
@@ -141,6 +149,22 @@ function handleNavbarScroll() {
   } else {
     navbar.style.backgroundColor =
       currentTheme === "dark" ? "var(--bg-color)" : "var(--bg-color)";
+  }
+}
+
+// NEW: Scroll to Top Button Logic
+function handleScrollToTop() {
+  if (!heroSection || !scrollToTopBtn || !navbar) return;
+
+  const navHeight = navbar.offsetHeight || 70;
+  // Get the position of the bottom of the hero section relative to the viewport
+  const heroBottomViewport = heroSection.getBoundingClientRect().bottom;
+
+  // If the bottom of the hero section is above the bottom of the navbar
+  if (heroBottomViewport < navHeight) {
+    scrollToTopBtn.classList.add("visible");
+  } else {
+    scrollToTopBtn.classList.remove("visible");
   }
 }
 
@@ -206,10 +230,67 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // NEW: Scroll to Top Click Listener
+  if (scrollToTopBtn) {
+    scrollToTopBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      // Scroll to the very top of the page
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    });
+  }
+
+  // Add NEW scroll listener for scroll-to-top
+  window.addEventListener("scroll", handleScrollToTop);
+  // Add existing scroll listeners
   window.addEventListener("scroll", handleNavbarScroll);
   window.addEventListener("scroll", animateOnScroll);
 
   initAnimations();
+
+  // === NEW: ENCHANTED CURSOR LOGIC ===
+  if (enchantedCursor) {
+    let mouseX = -100; // Start off-screen
+    let mouseY = -100;
+    let cursorX = -100;
+    let cursorY = -100;
+    const speed = 0.5; // Controls the "lag" (0.1 - 0.2 is good)
+
+    window.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    // Animation loop to smoothly follow the cursor
+    const animateCursor = () => {
+      // Calculate distance to target
+      let dx = mouseX - cursorX;
+      let dy = mouseY - cursorY;
+
+      // Move a fraction of the distance (lerping)
+      cursorX += dx * speed;
+      cursorY += dy * speed;
+
+      // Apply the transform
+      enchantedCursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+
+      requestAnimationFrame(animateCursor);
+    };
+    requestAnimationFrame(animateCursor); // Start the loop
+
+    // Hide cursor when leaving the window
+    document.addEventListener("mouseleave", () => {
+      enchantedCursor.style.opacity = "0";
+    });
+
+    // Show cursor when re-entering the window
+    document.addEventListener("mouseenter", () => {
+      enchantedCursor.style.opacity = "1";
+    });
+  }
+  // === END NEW CURSOR LOGIC ===
 
   document.addEventListener("click", function (e) {
     if (
@@ -226,6 +307,8 @@ document.addEventListener("DOMContentLoaded", function () {
       toggleSidebar();
     }
   });
+
+  // (REMOVED old .cursor-glow logic)
 });
 
 const sectionObserver = new IntersectionObserver(

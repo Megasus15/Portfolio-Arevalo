@@ -1122,6 +1122,7 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
+  z-index: 2; /* <-- FIX: Ensure bubbles are on top of the image */
 }
 
 .decoration-circle {
@@ -1570,6 +1571,212 @@ section {
   font-size: 0.9rem;
 }
 
+/* === GLOWING IMAGE OUTLINE ANIMATION (LONGER LINES) === */
+
+/* 1. Define the spinning animation */
+@keyframes spin-glow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 2. Target the two image wrapper elements */
+.hero .image-placeholder,
+.about .about-image-container {
+  position: relative;
+  /* This is CRITICAL. We must override 'overflow: hidden' 
+       so the glow isn't clipped by the parent container. 
+   */
+  overflow: visible;
+}
+
+/* 3. Create the glowing, spinning gradient pseudo-element */
+.hero .image-placeholder::before,
+.about .about-image-container::before {
+  content: "";
+  position: absolute;
+  z-index: -1; /* Place it behind the image */
+
+  /* Make it slightly larger to account for the stronger glow */
+  left: -5px;
+  top: -5px;
+  right: -5px;
+  bottom: -5px;
+
+  /* This inherits the border-radius (50% for hero, 20px for about) */
+  border-radius: inherit;
+
+  /* This conic-gradient creates two "chasing lines"
+       using the "modern brown" variable (--primary-color).
+       Each line is now 40deg long (was 20deg).
+   */
+  background: conic-gradient(
+    /* Line 1 (40deg long) */ var(--primary-color) 0deg 40deg,
+    /* Gap 1 */ transparent 40deg 180deg,
+    /* Line 2 (40deg long) */ var(--primary-color) 180deg 220deg,
+    /* Gap 2 */ transparent 220deg 360deg
+  );
+
+  /* A stronger, more attractive glow */
+  filter: blur(8px);
+  opacity: 1;
+
+  /* Apply the spinning "chasing" animation */
+  animation: spin-glow 4s linear infinite;
+}
+
+/* 4. Re-apply the border-radius to the <img> tag itself.
+  Since the parent no longer has 'overflow: hidden', 
+  we need to clip the image's corners manually.
+*/
+.hero .image-placeholder img,
+.about .about-image-container img {
+  /* This inherits 50% from .image-placeholder or 20px from .about-image-container */
+  border-radius: inherit;
+  position: relative; /* Ensure it stacks on top of the ::before pseudo-element */
+  z-index: 1;
+}
+
+/* === NEW: SCROLL TO TOP BUTTON === */
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  background-color: var(--primary-color);
+  color: white; /* Matches btn-primary text */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  z-index: 999; /* Below navbar, same level as glow */
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  /* Initial hidden state */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.scroll-to-top:hover {
+  background-color: var(--secondary-color); /* Matches btn-primary:hover */
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  color: white;
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* === NEW: ENCHANTED CURSOR STYLES === */
+
+/* 1. Hide the default system cursor */
+html,
+body {
+  cursor: none;
+}
+
+/* 2. Force all interactive elements to also hide the cursor */
+a,
+button,
+.btn,
+.theme-toggle,
+.nav-hamburger,
+.sidebar-close,
+.carousel-btn,
+.project-link,
+.contact-link,
+.scroll-to-top,
+.indicator,
+[data-slide] {
+  /* Use !important to override any :hover cursor styles */
+  cursor: none !important;
+}
+
+/* 3. Style the custom cursor element */
+.enchanted-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px; /* Match image size */
+  height: 32px; /* Match image size */
+  z-index: 9999; /* Above everything */
+  pointer-events: none; /* So it doesn't block clicks */
+
+  /* Start off-screen (position is handled by JS) */
+  transform: translate(-100px, -100px);
+
+  /* Make the pixel art sharp */
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+
+  /* For mouse enter/leave */
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.enchanted-cursor img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 2; /* Sword on top of glow */
+}
+
+/* 4. Style the "Enchanting Aura" */
+.sword-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Glow behind sword */
+
+  /* Using Minecraft's enchantment color: a mix of purple/pink */
+  background: radial-gradient(
+    circle,
+    rgba(255, 0, 255, 0.6) 0%,
+    rgba(199, 0, 255, 0.4) 40%,
+    rgba(100, 0, 255, 0.1) 70%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  /* Make it a bit larger than the sword */
+  transform: scale(1.5);
+  border-radius: 50%;
+
+  /* The animation: pulse and fade */
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(1.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.6);
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .nav-menu {
@@ -1651,6 +1858,15 @@ section {
 
   .carousel-controls {
     padding: 1rem;
+  }
+
+  /* NEW: Adjust scroll-to-top for smaller screens */
+  .scroll-to-top {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    bottom: 15px;
+    right: 15px;
   }
 }
 

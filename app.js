@@ -200,7 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (typingText) {
     const textsToType = [
       "Web Developer",
-      "BS in Information System",
+      "BS in Information Systems",
       "20 Years Old",
     ];
     new TypingAnimation(typingText, textsToType, 150);
@@ -256,7 +256,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let mouseY = -100;
     let cursorX = -100;
     let cursorY = -100;
-    const speed = 0.5; // Controls the "lag" (0.1 - 0.2 is good)
+    const speed = 1; // Controls the "lag" (0.1 - 0.2 is good)
 
     window.addEventListener("mousemove", (e) => {
       mouseX = e.clientX;

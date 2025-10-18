@@ -174,7 +174,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // **MODIFIED** Initialize typing animation with new texts and slower speed
   if (typingText) {
-    const textsToType = ["Web Developer", "BS in Information System"];
+    const textsToType = [
+      "Web Developer",
+      "BS in Information System",
+      "20 Years Old",
+    ];
     new TypingAnimation(typingText, textsToType, 150);
   }
 

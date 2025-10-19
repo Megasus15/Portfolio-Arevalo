@@ -1,3 +1,4 @@
+/* --- 1. CSS Variables (Design Tokens) --- */
 :root {
   /* Primitive Color Tokens */
   --color-white: rgba(255, 255, 255, 1);
@@ -144,7 +145,7 @@
   --container-xl: 1280px;
 }
 
-/* Dark mode colors */
+/* --- 2. Dark Mode (System Preference) --- */
 @media (prefers-color-scheme: dark) {
   :root {
     /* RGB versions for opacity control (Dark Mode) */
@@ -205,7 +206,8 @@
   }
 }
 
-/* Data attribute for manual theme switching */
+/* --- 3. Dark Mode (Manual Toggle) --- */
+/* This block applies dark mode when the data-color-scheme attribute is set by JS */
 [data-color-scheme="dark"] {
   /* RGB versions for opacity control (dark mode) */
   --color-gray-400-rgb: 119, 124, 124;
@@ -263,6 +265,8 @@
   --color-info-rgb: var(--color-gray-300-rgb);
 }
 
+/* --- 4. Light Mode (Manual Toggle Fallback) --- */
+/* This block applies light mode when the data-color-scheme attribute is set by JS */
 [data-color-scheme="light"] {
   /* RGB versions for opacity control (light mode) */
   --color-brown-600-rgb: 94, 82, 64;
@@ -297,7 +301,7 @@
   --color-info-rgb: var(--color-slate-500-rgb);
 }
 
-/* Base styles */
+/* --- 5. Base & Reset Styles (Design System) --- */
 html {
   font-size: var(--font-size-base);
   font-family: var(--font-family-base);
@@ -319,7 +323,7 @@ body {
   box-sizing: inherit;
 }
 
-/* Typography */
+/* --- 6. Typography (Design System) --- */
 h1,
 h2,
 h3,
@@ -366,7 +370,7 @@ a:hover {
   color: var(--color-primary-hover);
 }
 
-/* **MODIFIED** Text Justification */
+/* Justify text for readability (user request) */
 .hero-description,
 .about-text p,
 .project-content p,
@@ -398,7 +402,7 @@ pre code {
   padding: 0;
 }
 
-/* Buttons */
+/* --- 7. Button Component (Design System) --- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -477,7 +481,7 @@ pre code {
   cursor: not-allowed;
 }
 
-/* Form elements */
+/* --- 8. Form Elements (Design System) --- */
 .form-control {
   display: block;
   width: 100%;
@@ -541,7 +545,7 @@ select.form-control {
   margin-bottom: var(--space-16);
 }
 
-/* Card component */
+/* --- 9. Card Component (Design System) --- */
 .card {
   background-color: var(--color-surface);
   border-radius: var(--radius-lg);
@@ -565,7 +569,7 @@ select.form-control {
   border-bottom: 1px solid var(--color-card-border-inner);
 }
 
-/* Status indicators - simplified with CSS variables */
+/* --- 10. Status Indicator Component (Design System) --- */
 .status {
   display: inline-flex;
   align-items: center;
@@ -615,7 +619,7 @@ select.form-control {
     rgba(var(--color-info-rgb, 98, 108, 113), var(--status-border-opacity));
 }
 
-/* Container layout */
+/* --- 11. Layout Container (Design System) --- */
 .container {
   width: 100%;
   margin-right: auto;
@@ -645,7 +649,7 @@ select.form-control {
   }
 }
 
-/* Utility classes */
+/* --- 12. Utility Classes (Design System) --- */
 .flex {
   display: flex;
 }
@@ -716,7 +720,7 @@ select.form-control {
   display: none;
 }
 
-/* Accessibility */
+/* --- 13. Accessibility (Design System) --- */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -739,14 +743,19 @@ select.form-control {
   border: 1px solid var(--color-border-secondary);
 }
 
+/* --- 14. Custom Font Loading (Design System) --- */
 @font-face {
   font-family: "FKGroteskNeue";
   src: url("https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2")
     format("woff2");
 }
 
-/* END PERPLEXITY DESIGN SYSTEM */
-/* Reset and Base Styles */
+/* ================================================= */
+/* END PERPLEXITY DESIGN SYSTEM                      */
+/* START PROJECT-SPECIFIC STYLES                     */
+/* ================================================= */
+
+/* --- 15. Project-Specific Resets & Base --- */
 * {
   margin: 0;
   padding: 0;
@@ -765,11 +774,12 @@ body {
   transition: all 0.3s ease;
 }
 
-/* CSS Variables for Light Theme */
+/* --- 16. Project Theme Variables (Light/Dark) --- */
+/* Light Theme (Default) */
 :root {
-  --primary-color: #8b4513;
-  --secondary-color: #a0522d;
-  --accent-color: #d2b48c;
+  --primary-color: #8b4513; /* Brown */
+  --secondary-color: #a0522d; /* Sienna */
+  --accent-color: #d2b48c; /* Tan */
   --bg-color: #ffffff;
   --surface-color: #fafafa;
   --text-color: #333333;
@@ -780,11 +790,11 @@ body {
   --section-highlight-bg: #fdfaf6;
 }
 
-/* Dark Theme Variables */
+/* Dark Theme */
 [data-theme="dark"] {
-  --primary-color: #d2b48c;
-  --secondary-color: #f4a460;
-  --accent-color: #8b4513;
+  --primary-color: #d2b48c; /* Tan */
+  --secondary-color: #f4a460; /* Sandy Brown */
+  --accent-color: #8b4513; /* Brown */
   --bg-color: #1a0f0a;
   --surface-color: #2c1810;
   --text-color: #f5f5f5;
@@ -795,14 +805,14 @@ body {
   --section-highlight-bg: #251d19;
 }
 
-/* Container */
+/* --- 17. Project Container Override --- */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* Navigation */
+/* --- 18. Navigation Bar --- */
 .navbar {
   position: fixed;
   top: 0;
@@ -846,6 +856,7 @@ body {
   border-radius: 5px;
 }
 
+/* Underline animation for nav links */
 .nav-link::after {
   content: "";
   position: absolute;
@@ -868,6 +879,7 @@ body {
   width: 60%;
 }
 
+/* Active state for nav links (from JS) */
 .nav-link.active {
   color: var(--primary-color);
   font-weight: 700;
@@ -902,8 +914,9 @@ body {
   color: white;
 }
 
+/* Mobile hamburger menu icon */
 .nav-hamburger {
-  display: none;
+  display: none; /* Hidden on desktop */
   flex-direction: column;
   cursor: pointer;
   gap: 3px;
@@ -916,11 +929,11 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Sidebar */
+/* --- 19. Mobile Sidebar --- */
 .sidebar {
   position: fixed;
   top: 0;
-  right: -300px;
+  right: -300px; /* Off-screen by default */
   width: 300px;
   height: 100vh;
   background: var(--bg-color);
@@ -930,7 +943,7 @@ body {
 }
 
 .sidebar.active {
-  right: 0;
+  right: 0; /* Slides into view */
 }
 
 .sidebar-content {
@@ -970,7 +983,7 @@ body {
   color: var(--primary-color);
 }
 
-/* Hero Section */
+/* --- 20. Hero Section --- */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -980,7 +993,7 @@ body {
     var(--bg-color) 0%,
     var(--surface-color) 100%
   );
-  padding-top: 70px;
+  padding-top: 70px; /* Offset for fixed navbar */
   will-change: transform;
 }
 
@@ -1013,9 +1026,10 @@ body {
   font-weight: 600;
   margin-bottom: 2rem;
   color: var(--secondary-color);
-  min-height: 60px;
+  min-height: 60px; /* Prevents layout shift during typing */
 }
 
+/* Blinking cursor for typing animation */
 .typing-text::after {
   content: "|";
   animation: blink 1s infinite;
@@ -1032,6 +1046,7 @@ body {
   }
 }
 
+/* Justification for readability */
 .hero-description,
 .about-text p,
 .project-content p,
@@ -1051,6 +1066,7 @@ body {
   gap: 1rem;
 }
 
+/* Base button styles for the project */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -1085,6 +1101,29 @@ body {
   color: white;
 }
 
+/* === MODIFIED: HERO SOCIAL ICONS === */
+.hero-socials {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* <-- "Better gaps" (was 1.5rem) */
+  margin-top: 2.5rem; /* <-- Better spacing from buttons (was 2rem) */
+}
+
+.hero-social-link {
+  color: var(--primary-color); /* <-- "Make it brown" (was --text-secondary) */
+  font-size: 2rem; /* <-- "Modern" (matches contact icons, was 1.8rem) */
+  transition: all 0.3s ease;
+}
+
+.hero-social-link:hover {
+  color: var(--secondary-color); /* <-- Brighter brown for attractive hover */
+  transform: translateY(
+    -5px
+  ); /* <-- "Identical hover" (matches contact card lift) */
+}
+/* === END MODIFIED === */
+
+/* Ensures images fill their containers */
 .image-placeholder img,
 .about-image-container img,
 .project-image img {
@@ -1115,6 +1154,7 @@ body {
   box-shadow: var(--shadow);
 }
 
+/* Floating circle decorations */
 .image-decoration {
   position: absolute;
   top: 0;
@@ -1156,6 +1196,7 @@ body {
   animation-delay: 4s;
 }
 
+/* Floating animation */
 @keyframes float {
   0%,
   100% {
@@ -1166,7 +1207,7 @@ body {
   }
 }
 
-/* Section Styles */
+/* --- 21. General Section Styling --- */
 section {
   padding: 6rem 0;
 }
@@ -1180,6 +1221,7 @@ section {
   position: relative;
 }
 
+/* Title underline */
 .section-title::after {
   content: "";
   position: absolute;
@@ -1192,7 +1234,7 @@ section {
   border-radius: 2px;
 }
 
-/* About Section */
+/* --- 22. About Me Section --- */
 .about {
   background: var(--section-highlight-bg);
 }
@@ -1250,9 +1292,10 @@ section {
   color: var(--text-secondary);
 }
 
-/* Projects Section */
+/* --- 23. Projects Section --- */
 .projects-grid {
   display: grid;
+  /* Responsive grid: creates columns that are at least 350px wide */
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
 }
@@ -1265,7 +1308,7 @@ section {
   transition: all 0.3s ease;
   border: 1px solid var(--border-color);
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Ensures footer links align */
 }
 
 .project-card:hover {
@@ -1283,7 +1326,7 @@ section {
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex-grow: 1; /* Allows footer to stick to bottom */
 }
 
 .project-content h3 {
@@ -1318,7 +1361,7 @@ section {
 .project-links {
   display: flex;
   gap: 1rem;
-  margin-top: auto;
+  margin-top: auto; /* Pushes links to the bottom of the card */
 }
 
 .project-link {
@@ -1336,7 +1379,7 @@ section {
   text-decoration: underline;
 }
 
-/* Skills Section */
+/* --- 24. Skills Section (Carousel) --- */
 .skills {
   background: var(--section-highlight-bg);
 }
@@ -1357,11 +1400,11 @@ section {
 
 .carousel-wrapper {
   display: flex;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease; /* Slide animation */
 }
 
 .skill-category {
-  min-width: 100%;
+  min-width: 100%; /* Each category is one full slide */
   padding: 3rem 2rem;
   text-align: center;
 }
@@ -1439,7 +1482,7 @@ section {
   background: var(--primary-color);
 }
 
-/* Services Section */
+/* --- 25. Services Section --- */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -1508,7 +1551,7 @@ section {
   color: var(--primary-color);
 }
 
-/* Contact Section */
+/* --- 26. Contact Section --- */
 .contact {
   background: var(--section-highlight-bg);
   text-align: center;
@@ -1558,7 +1601,7 @@ section {
   font-weight: 500;
 }
 
-/* Footer */
+/* --- 27. Footer --- */
 .footer {
   background: var(--bg-color);
   padding: 2rem 0;
@@ -1639,6 +1682,7 @@ section {
   position: relative; /* Ensure it stacks on top of the ::before pseudo-element */
   z-index: 1;
 }
+/* === END GLOWING IMAGE === */
 
 /* === NEW: SCROLL TO TOP BUTTON === */
 .scroll-to-top {
@@ -1654,7 +1698,7 @@ section {
   align-items: center;
   justify-content: center;
   font-size: 1.1rem;
-  z-index: 999; /* Below navbar, same level as glow */
+  z-index: 999;
   box-shadow: var(--shadow);
   text-decoration: none;
   /* Initial hidden state */
@@ -1672,17 +1716,13 @@ section {
   color: white;
 }
 
+/* This class is added by JS when scrolled past the hero section */
 .scroll-to-top.visible {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
-
-.scroll-to-top.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
+/* === END SCROLL TO TOP === */
 
 /* === NEW: ENCHANTED CURSOR STYLES === */
 
@@ -1776,9 +1816,11 @@ button,
     transform: scale(1.6);
   }
 }
+/* === END ENCHANTED CURSOR === */
 
-/* Responsive Design */
+/* --- 28. Responsive Design (Tablet) --- */
 @media (max-width: 768px) {
+  /* Hide desktop nav, show mobile hamburger */
   .nav-menu {
     display: none;
   }
@@ -1787,9 +1829,10 @@ button,
     display: flex;
   }
 
+  /* Stack hero content vertically */
   .hero-content {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column-reverse; /* Image on top */
     text-align: center;
     gap: 2rem;
   }
@@ -1802,6 +1845,7 @@ button,
     font-size: 1.5rem;
   }
 
+  /* Stack about content vertically */
   .about-content {
     grid-template-columns: 1fr;
     text-align: center;
@@ -1813,6 +1857,7 @@ button,
     gap: 1rem;
   }
 
+  /* Force project/service cards to 1 column */
   .projects-grid {
     grid-template-columns: 1fr;
   }
@@ -1826,6 +1871,7 @@ button,
     gap: 1rem;
   }
 
+  /* Resize images */
   .image-container {
     width: 250px;
     height: 250px;
@@ -1841,6 +1887,11 @@ button,
     flex-direction: column;
     gap: 1rem;
     align-items: center;
+  }
+
+  /* === NEW: CENTER SOCIAL ICONS ON MOBILE === */
+  .hero-socials {
+    justify-content: center;
   }
 
   .btn {
@@ -1870,6 +1921,7 @@ button,
   }
 }
 
+/* --- 29. Responsive Design (Mobile) --- */
 @media (max-width: 480px) {
   .container {
     padding: 0 15px;
